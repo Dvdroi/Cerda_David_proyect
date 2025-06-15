@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página HTML5 - Proyecto Académico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            background: #2c3e50;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #3498db;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        section, article {
+            background: white;
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover, article:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        h3 {
+            color: #34495e;
+            margin: 1.5rem 0 1rem 0;
+        }
+
+        img, video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin: 1rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background: #f8f9fa;
+        }
+
+        form {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+        }
+
+        label {
+            display: block;
+            margin: 1rem 0 0.5rem 0;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ecf0f1;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+        }
+
+        button {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        ul, ol {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .video-container {
+            position: relative;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .video-placeholder {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .video-placeholder h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .video-info {
+            background: #e8f4f8;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            border-left: 4px solid #3498db;
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #e74c3c;
+        }
+
+        strong {
+            color: #2c3e50;
+        }
+
+        em {
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 15px;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            section, article {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Encabezado principal -->
+        <header>
+            <h1>Mi Página Web con HTML5</h1>
+            <p>Demostrando etiquetas semánticas y estructura profesional</p>
+        </header>
+
+        <!-- Navegación -->
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <!-- Contenido principal -->
+        <main>
+            <!-- Sección de inicio -->
+            <section id="inicio">
+                <h2>Bienvenido a mi sitio web</h2>
+                <p>Esta página web ha sido creada utilizando <strong>HTML5</strong> y <em>CSS3</em> 
+                para demostrar el uso correcto de etiquetas semánticas y buenas prácticas de desarrollo web.</p>
+                
+                <!-- Imagen placeholder -->
+                <div style="background: linear-gradient(135deg, #ff9a9e, #fecfef); padding: 3rem; border-radius: 15px; text-align: center; color: white; margin: 1rem 0;">
+                    <h3>🖼️ Imagen de ejemplo</h3>
+                    <p>Aquí iría tu imagen (assets/img/imagen1.jpg)</p>
+                </div>
+                
+                <p>La imagen anterior demuestra el uso correcto de la etiqueta <code>&lt;img&gt;</code> 
+                con el atributo <strong>alt</strong> para accesibilidad.</p>
+            </section>
+
+            <!-- Artículo sobre tecnologías -->
+            <article>
+                <h2>Tecnologías Web Modernas</h2>
+                <h3>HTML5</h3>
+                <p>HTML5 es la quinta y actual versión del estándar HTML. Introduce nuevas 
+                etiquetas semánticas que mejoran la <em>estructura</em> y <strong>accesibilidad</strong> 
+                de los sitios web.</p>
+
+                <h3>Características principales de HTML5</h3>
+                
+                <!-- Lista ordenada -->
+                <ol>
+                    <li>Nuevas etiquetas semánticas (header, nav, main, section, article, footer)</li>
+                    <li>Soporte nativo para multimedia (audio y video)</li>
+                    <li>Mejor soporte para formularios interactivos</li>
+                    <li>APIs JavaScript más potentes</li>
+                </ol>
+
+                <!-- Lista desordenada -->
+                <h3>Ventajas del desarrollo web moderno</h3>
+                <ul>
+                    <li>Mejor experiencia de usuario</li>
+                    <li>Mayor accesibilidad</li>
+                    <li>Optimización para dispositivos móviles</li>
+                    <li>Mejor posicionamiento en motores de búsqueda (SEO)</li>
+                </ul>
+            </article>
+
+            <!-- Sección de multimedia CORREGIDA -->
+            <section id="multimedia">
+                <h2>Contenido Multimedia</h2>
+                <p>A continuación se muestra cómo implementar video correctamente con HTML5:</p>
+                
+                <div class="video-container">
+                    <!-- Video con múltiples formatos y mejor configuración -->
+                    <video controls preload="metadata" width="100%" style="max-width: 600px;">
+                        <source src="assets/video/video1.mp4" type="video/mp4">
+                        <source src="assets/video/video1.webm" type="video/webm">
+                        <source src="assets/video/video1.ogg" type="video/ogg">
+                        <p>Tu navegador no soporta el elemento video HTML5. 
+                           <a href="assets/video/video1.mp4">Descargar video</a>
+                        </p>
+                    </video>
+                </div>
+
+                <div class="video-info">
+                    <h3>💡 Soluciones para problemas de video:</h3>
+                    <p><strong>Si el video no se reproduce, verifica:</strong></p>
+                    <ul>
+                        <li>✅ Que el archivo existe en la ruta especificada</li>
+                        <li>✅ Que el formato es compatible (MP4, WebM, OGG)</li>
+                        <li>✅ Que el servidor web está configurado correctamente</li>
+                        <li>✅ Que el video no está corrupto</li>
+                    </ul>
+                </div>
+
+                <!-- Video de ejemplo con URL pública (para demostración) -->
+                <h3>Ejemplo funcional con video público:</h3>
+                <video controls preload="metadata" width="100%" style="max-width: 600px; margin: 1rem 0;">
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento video.
+                </video>
+            </section>
+
+            <!-- Sección con tabla -->
+            <section id="datos">
+                <h2>Información Académica</h2>
+                <p>La siguiente tabla muestra información sobre cursos de desarrollo web:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Curso</th>
+                            <th>Duración</th>
+                            <th>Nivel</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>HTML5 Básico</td>
+                            <td>4 semanas</td>
+                            <td>Principiante</td>
+                        </tr>
+                        <tr>
+                            <td>CSS3 Avanzado</td>
+                            <td>6 semanas</td>
+                            <td>Intermedio</td>
+                        </tr>
+                        <tr>
+                            <td>JavaScript Moderno</td>
+                            <td>8 semanas</td>
+                            <td>Avanzado</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Sección de contacto con formulario -->
+            <section id="contacto">
+                <h2>Formulario de Contacto</h2>
+                <p>Si tienes alguna pregunta o comentario, no dudes en contactarme:</p>
+                
+                <form>
+                    <label for="nombre">Nombre completo:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    
+                    <label for="correo">Correo electrónico:</label>
+                    <input type="email" id="correo" name="correo" required>
+                    
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+                    
+                    <button type="submit">Enviar mensaje</button>
+                </form>
+            </section>
+
+            <!-- Enlaces externos -->
+            <section id="recursos">
+                <h2>Recursos Útiles</h2>
+                <p>Aquí tienes algunos enlaces externos útiles para aprender más sobre desarrollo web:</p>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/es/" target="_blank">MDN Web Docs - Documentación web</a></li>
+                    <li><a href="https://www.w3schools.com/" target="_blank">W3Schools - Tutoriales de programación</a></li>
+                    <li><a href="https://github.com/" target="_blank">GitHub - Repositorios de código</a></li>
+                </ul>
+            </section>
+        </main>
+
+        <!-- Pie de página -->
+        <footer>
+            <p>&copy; 2025 Mi Página HTML5. Proyecto académico desarrollado para demostrar el uso de etiquetas semánticas.</p>
+            <p><small>Creado con HTML5, CSS3 y mucho ❤️</small></p>
+        </footer>
+    </div>
+</body>
+</html>
