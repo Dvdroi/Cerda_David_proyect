@@ -3,451 +3,488 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página HTML5 - Proyecto Académico</title>
+    <title>Mi Sitio Web Moderno</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        /* Estilos CSS3 Avanzados */
+        :root {
+            --primary-color: #ff5733;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --dark-color: #2c3e50;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border-radius: 20px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        header {
-            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
-
-        nav {
-            background: #2c3e50;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-        }
-
-        nav ul {
-            list-style: none;
+        /* Animación de gradiente en el hero */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 70vh;
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
+            align-items: center;
+            position: relative;
         }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-            transition: all 0.3s ease;
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        nav a:hover {
-            background: #3498db;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-        }
-
-        section, article {
-            background: white;
-            margin-bottom: 2rem;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        /* Navegación personalizada */
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
             transition: transform 0.3s ease;
         }
 
-        section:hover, article:hover {
-            transform: translateY(-5px);
+        .navbar-brand:hover {
+            transform: scale(1.1) rotate(2deg);
         }
 
-        h2 {
-            color: #2c3e50;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
+        .navbar-nav .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
         }
 
-        h3 {
-            color: #34495e;
-            margin: 1.5rem 0 1rem 0;
-        }
-
-        img, video {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            margin: 1rem 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        th, td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid #ecf0f1;
-        }
-
-        th {
-            background: #3498db;
-            color: white;
-            font-weight: 600;
-        }
-
-        tr:hover {
-            background: #f8f9fa;
-        }
-
-        form {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 10px;
-            margin: 1rem 0;
-        }
-
-        label {
-            display: block;
-            margin: 1rem 0 0.5rem 0;
-            font-weight: 600;
-            color: #2c3e50;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #ecf0f1;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
-        }
-
-        button {
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-top: 1rem;
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--primary-color);
             transition: all 0.3s ease;
         }
 
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+            left: 0;
         }
 
-        ul, ol {
-            margin: 1rem 0;
-            padding-left: 2rem;
+        /* Botón personalizado */
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            border: none;
+            border-radius: 25px;
+            padding: 12px 30px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 87, 51, 0.3);
         }
 
-        li {
-            margin: 0.5rem 0;
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 87, 51, 0.4);
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
         }
 
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: #2980b9;
-            text-decoration: underline;
-        }
-
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            border-radius: 15px;
-            margin-top: 2rem;
-        }
-
-        .video-container {
+        /* Tarjetas con efectos avanzados */
+        .custom-card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             position: relative;
-            background: #f8f9fa;
+        }
+
+        .custom-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .custom-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .custom-card:hover .card-img-top {
+            transform: scale(1.1);
+        }
+
+        /* Formulario con efectos glassmorphism */
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
             padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control {
+            border: 2px solid transparent;
             border-radius: 15px;
-            text-align: center;
+            padding: 12px 20px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
         }
 
-        .video-placeholder {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 20px rgba(255, 87, 51, 0.2);
+            transform: translateY(-2px);
+            background: white;
+        }
+
+        /* Animaciones de entrada */
+        .fade-in-up {
+            animation: fadeInUp 1s ease forwards;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .fade-in-up:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in-up:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in-up:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer personalizado */
+        .custom-footer {
+            background: linear-gradient(135deg, var(--dark-color), #34495e);
             color: white;
-            padding: 4rem 2rem;
-            border-radius: 15px;
+            padding: 3rem 0 1rem;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
             text-align: center;
-            margin: 1rem 0;
-        }
-
-        .video-placeholder h3 {
+            line-height: 50px;
+            margin: 0 10px;
+            transition: all 0.3s ease;
             color: white;
-            margin-bottom: 1rem;
         }
 
-        .video-info {
-            background: #e8f4f8;
-            padding: 1.5rem;
-            border-radius: 10px;
-            margin: 1rem 0;
-            border-left: 4px solid #3498db;
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px) rotate(360deg);
+            color: white;
         }
 
-        code {
-            background: #f8f9fa;
-            padding: 0.2rem 0.5rem;
-            border-radius: 3px;
-            font-family: 'Courier New', monospace;
-            color: #e74c3c;
-        }
-
-        strong {
-            color: #2c3e50;
-        }
-
-        em {
-            color: #7f8c8d;
-        }
-
+        /* Media Queries Personalizadas */
         @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                padding: 15px;
+            .hero-section {
+                min-height: 50vh;
+                text-align: center;
             }
             
-            header h1 {
+            .hero-section h1 {
                 font-size: 2rem;
             }
             
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
+            .custom-card {
+                margin-bottom: 2rem;
             }
             
-            section, article {
-                padding: 1.5rem;
+            .form-container {
+                margin: 1rem;
+                padding: 1rem;
             }
+        }
+
+        @media (max-width: 576px) {
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            
+            .btn-primary {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Efectos adicionales */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 87, 51, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 87, 51, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 87, 51, 0); }
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Encabezado principal -->
-        <header>
-            <h1>Mi Página Web con HTML5</h1>
-            <p>Demostrando etiquetas semánticas y estructura profesional</p>
-        </header>
-
-        <!-- Navegación -->
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#sobre-mi">Sobre mí</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-
-        <!-- Contenido principal -->
-        <main>
-            <!-- Sección de inicio -->
-            <section id="inicio">
-                <h2>Bienvenido a mi sitio web</h2>
-                <p>Esta página web ha sido creada utilizando <strong>HTML5</strong> y <em>CSS3</em> 
-                para demostrar el uso correcto de etiquetas semánticas y buenas prácticas de desarrollo web.</p>
-                
-                <!-- Imagen placeholder -->
-                <div style="background: linear-gradient(135deg, #ff9a9e, #fecfef); padding: 3rem; border-radius: 15px; text-align: center; color: white; margin: 1rem 0;">
-                    <h3>🖼️ Imagen de ejemplo</h3>
-                    <p>Aquí iría tu imagen (assets/img/imagen1.jpg)</p>
-                </div>
-                
-                <p>La imagen anterior demuestra el uso correcto de la etiqueta <code>&lt;img&gt;</code> 
-                con el atributo <strong>alt</strong> para accesibilidad.</p>
-            </section>
-
-            <!-- Artículo sobre tecnologías -->
-            <article>
-                <h2>Tecnologías Web Modernas</h2>
-                <h3>HTML5</h3>
-                <p>HTML5 es la quinta y actual versión del estándar HTML. Introduce nuevas 
-                etiquetas semánticas que mejoran la <em>estructura</em> y <strong>accesibilidad</strong> 
-                de los sitios web.</p>
-
-                <h3>Características principales de HTML5</h3>
-                
-                <!-- Lista ordenada -->
-                <ol>
-                    <li>Nuevas etiquetas semánticas (header, nav, main, section, article, footer)</li>
-                    <li>Soporte nativo para multimedia (audio y video)</li>
-                    <li>Mejor soporte para formularios interactivos</li>
-                    <li>APIs JavaScript más potentes</li>
-                </ol>
-
-                <!-- Lista desordenada -->
-                <h3>Ventajas del desarrollo web moderno</h3>
-                <ul>
-                    <li>Mejor experiencia de usuario</li>
-                    <li>Mayor accesibilidad</li>
-                    <li>Optimización para dispositivos móviles</li>
-                    <li>Mejor posicionamiento en motores de búsqueda (SEO)</li>
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-rocket me-2"></i>Mi Sitio Web
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#inicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servicios">Servicios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
                 </ul>
-            </article>
+            </div>
+        </div>
+    </nav>
 
-            <!-- Sección de multimedia CORREGIDA -->
-            <section id="multimedia">
-                <h2>Contenido Multimedia</h2>
-                <p>A continuación se muestra cómo implementar video correctamente con HTML5:</p>
-                
-                <div class="video-container">
-                    <!-- Video con múltiples formatos y mejor configuración -->
-                    <video controls preload="metadata" width="100%" style="max-width: 600px;">
-                        <source src="assets/video/video1.mp4" type="video/mp4">
-                        <source src="assets/video/video1.webm" type="video/webm">
-                        <source src="assets/video/video1.ogg" type="video/ogg">
-                        <p>Tu navegador no soporta el elemento video HTML5. 
-                           <a href="assets/video/video1.mp4">Descargar video</a>
-                        </p>
-                    </video>
+    <!-- Sección Hero -->
+    <section id="inicio" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 text-white fw-bold mb-4 fade-in-up">
+                        Bienvenido al Futuro del Diseño Web
+                    </h1>
+                    <p class="lead text-white mb-4 fade-in-up">
+                        Creamos experiencias digitales extraordinarias con las últimas tecnologías web.
+                    </p>
+                    <button class="btn btn-primary btn-lg pulse fade-in-up" data-bs-toggle="collapse" data-bs-target="#collapseContent">
+                        <i class="fas fa-magic me-2"></i>Descubrir Más
+                    </button>
                 </div>
-
-                <div class="video-info">
-                    <h3>💡 Soluciones para problemas de video:</h3>
-                    <p><strong>Si el video no se reproduce, verifica:</strong></p>
-                    <ul>
-                        <li>✅ Que el archivo existe en la ruta especificada</li>
-                        <li>✅ Que el formato es compatible (MP4, WebM, OGG)</li>
-                        <li>✅ Que el servidor web está configurado correctamente</li>
-                        <li>✅ Que el video no está corrupto</li>
-                    </ul>
+                <div class="col-lg-6 text-center">
+                    <div class="floating">
+                        <i class="fas fa-code text-white" style="font-size: 8rem; opacity: 0.7;"></i>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
 
-                <!-- Video de ejemplo con URL pública (para demostración) -->
-                <h3>Ejemplo funcional con video público:</h3>
-                <video controls preload="metadata" width="100%" style="max-width: 600px; margin: 1rem 0;">
-                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                    Tu navegador no soporta el elemento video.
-                </video>
-            </section>
-
-            <!-- Sección con tabla -->
-            <section id="datos">
-                <h2>Información Académica</h2>
-                <p>La siguiente tabla muestra información sobre cursos de desarrollo web:</p>
-                
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Curso</th>
-                            <th>Duración</th>
-                            <th>Nivel</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>HTML5 Básico</td>
-                            <td>4 semanas</td>
-                            <td>Principiante</td>
-                        </tr>
-                        <tr>
-                            <td>CSS3 Avanzado</td>
-                            <td>6 semanas</td>
-                            <td>Intermedio</td>
-                        </tr>
-                        <tr>
-                            <td>JavaScript Moderno</td>
-                            <td>8 semanas</td>
-                            <td>Avanzado</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <!-- Sección de contacto con formulario -->
-            <section id="contacto">
-                <h2>Formulario de Contacto</h2>
-                <p>Si tienes alguna pregunta o comentario, no dudes en contactarme:</p>
-                
-                <form>
-                    <label for="nombre">Nombre completo:</label>
-                    <input type="text" id="nombre" name="nombre" required>
-                    
-                    <label for="correo">Correo electrónico:</label>
-                    <input type="email" id="correo" name="correo" required>
-                    
-                    <label for="mensaje">Mensaje:</label>
-                    <textarea id="mensaje" name="mensaje" rows="4"></textarea>
-                    
-                    <button type="submit">Enviar mensaje</button>
-                </form>
-            </section>
-
-            <!-- Enlaces externos -->
-            <section id="recursos">
-                <h2>Recursos Útiles</h2>
-                <p>Aquí tienes algunos enlaces externos útiles para aprender más sobre desarrollo web:</p>
-                <ul>
-                    <li><a href="https://developer.mozilla.org/es/" target="_blank">MDN Web Docs - Documentación web</a></li>
-                    <li><a href="https://www.w3schools.com/" target="_blank">W3Schools - Tutoriales de programación</a></li>
-                    <li><a href="https://github.com/" target="_blank">GitHub - Repositorios de código</a></li>
-                </ul>
-            </section>
-        </main>
-
-        <!-- Pie de página -->
-        <footer>
-            <p>&copy; 2025 Mi Página HTML5. Proyecto académico desarrollado para demostrar el uso de etiquetas semánticas.</p>
-            <p><small>Creado con HTML5, CSS3 y mucho ❤️</small></p>
-        </footer>
+    <!-- Contenido Colapsable -->
+    <div class="collapse" id="collapseContent">
+        <div class="container py-4">
+            <div class="alert alert-info fade-in-up">
+                <h4 class="alert-heading">¡Increíble!</h4>
+                <p>Has descubierto nuestro contenido especial. Aquí encontrarás información exclusiva sobre nuestros servicios y tecnologías de vanguardia.</p>
+            </div>
+        </div>
     </div>
+
+    <!-- Sección de Servicios -->
+    <section id="servicios" class="py-5 bg-light">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-12 text-center">
+                    <h2 class="display-5 fw-bold mb-3">Nuestros Servicios</h2>
+                    <p class="lead text-muted">Soluciones innovadoras para tus necesidades digitales</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card custom-card h-100 fade-in-up">
+                        <div style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-palette text-white" style="font-size: 4rem;"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Diseño Web</h5>
+                            <p class="card-text">Creamos interfaces modernas y atractivas que cautivarán a tus usuarios desde el primer momento.</p>
+                            <button class="btn btn-outline-primary">Ver Más</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card custom-card h-100 fade-in-up">
+                        <div style="height: 200px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-mobile-alt text-white" style="font-size: 4rem;"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Desarrollo Móvil</h5>
+                            <p class="card-text">Aplicaciones móviles nativas y híbridas que funcionan perfectamente en cualquier dispositivo.</p>
+                            <button class="btn btn-outline-primary">Ver Más</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card custom-card h-100 fade-in-up">
+                        <div style="height: 200px; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-cloud text-white" style="font-size: 4rem;"></i>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Soluciones Cloud</h5>
+                            <p class="card-text">Infraestructura en la nube escalable y segura para hacer crecer tu negocio sin límites.</p>
+                            <button class="btn btn-outline-primary">Ver Más</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section id="contacto" class="py-5" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="text-center mb-5">
+                        <h2 class="display-5 fw-bold text-white mb-3">¡Hablemos!</h2>
+                        <p class="lead text-white">Cuéntanos sobre tu proyecto y hagámoslo realidad juntos</p>
+                    </div>
+                    <div class="form-container">
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="nombre" class="form-label text-white fw-bold">Nombre</label>
+                                    <input type="text" class="form-control" id="nombre" placeholder="Tu nombre completo" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email" class="form-label text-white fw-bold">Email</label>
+                                    <input type="email" class="form-control" id="email" placeholder="tu@email.com" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="asunto" class="form-label text-white fw-bold">Asunto</label>
+                                    <input type="text" class="form-control" id="asunto" placeholder="¿En qué podemos ayudarte?">
+                                </div>
+                                <div class="col-12">
+                                    <label for="comentarios" class="form-label text-white fw-bold">Comentarios</label>
+                                    <textarea class="form-control" id="comentarios" rows="4" placeholder="Cuéntanos más detalles sobre tu proyecto..."></textarea>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <button type="submit" class="btn btn-primary btn-lg">
+                                        <i class="fas fa-paper-plane me-2"></i>Enviar Mensaje
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="custom-footer text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="fw-bold mb-3">Mi Sitio Web</h5>
+                    <p>Creando el futuro del diseño web, una línea de código a la vez.</p>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="fw-bold mb-3">Síguenos</h5>
+                    <div class="social-links mb-3">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: rgba(255,255,255,0.2);">
+            <div class="row">
+                <div class="col-12">
+                    <p class="mb-0">&copy; 2025 Mi Sitio Web. Todos los derechos reservados.</p>
+                    <p class="small text-muted">Hecho con <i class="fas fa-heart text-danger"></i> y mucho café</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // JavaScript para efectos adicionales
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto de parallax suave en el scroll
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const hero = document.querySelector('.hero-section');
+                if (hero) {
+                    hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                }
+            });
+
+            // Animación de las tarjetas al hacer scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observar todas las tarjetas
+            const cards = document.querySelectorAll('.custom-card');
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+
+            // Efecto de typing en el título
+            const title = document.querySelector('.hero-section h1');
+            if (title) {
+                const text = title.textContent;
+                title.textContent = '';
+                let i = 0;
+                const typeWriter = function() {
+                    if (i < text.length) {
+                        title.textContent += text.charAt(i);
+                        i++;
+                        setTimeout(typeWriter, 100);
+                    }
+                };
+                setTimeout(typeWriter, 1000);
+            }
+        });
+    </script>
 </body>
 </html>
