@@ -1,0 +1,308 @@
+/* ===========================
+   VARIABLES CSS PERSONALIZADAS
+   =========================== */
+:root {
+    --primary-color: #ff5733;
+    --secondary-color: #3498db;
+    --accent-color: #e74c3c;
+    --dark-color: #2c3e50;
+}
+
+/* ===========================
+   ESTILOS GENERALES
+   =========================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* ===========================
+   SECCIÓN HERO
+   =========================== */
+.hero-section {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===========================
+   NAVEGACIÓN
+   =========================== */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.1) rotate(2deg);
+}
+
+.navbar-nav .nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+/* ===========================
+   BOTONES PERSONALIZADOS
+   =========================== */
+.btn-primary {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 87, 51, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 87, 51, 0.4);
+    background: linear-gradient(45deg, var(--accent-color), var(--primary-color));
+}
+
+/* ===========================
+   TARJETAS PERSONALIZADAS
+   =========================== */
+.custom-card {
+    border: none;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.custom-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.custom-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.custom-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* Imágenes de gradiente para las tarjetas */
+.card-img-gradient {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.card-img-design {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.card-img-mobile {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.card-img-cloud {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.custom-card:hover .card-img-gradient {
+    transform: scale(1.05);
+}
+
+/* Imágenes reales cuando se agreguen */
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.custom-card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+/* ===========================
+   FORMULARIOS CON GLASSMORPHISM
+   =========================== */
+.contact-section {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+    border: 2px solid transparent;
+    border-radius: 15px;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 20px rgba(255, 87, 51, 0.2);
+    transform: translateY(-2px);
+    background: white;
+}
+
+/* ===========================
+   ANIMACIONES DE ENTRADA
+   =========================== */
+.fade-in-up {
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.fade-in-up:nth-child(1) { animation-delay: 0.1s; }
+.fade-in-up:nth-child(2) { animation-delay: 0.2s; }
+.fade-in-up:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===========================
+   FOOTER PERSONALIZADO
+   =========================== */
+.custom-footer {
+    background: linear-gradient(135deg, var(--dark-color), #34495e);
+    color: white;
+    padding: 3rem 0 1rem;
+}
+
+.social-links a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 50px;
+    margin: 0 10px;
+    transition: all 0.3s ease;
+    color: white;
+}
+
+.social-links a:hover {
+    background: var(--primary-color);
+    transform: translateY(-5px) rotate(360deg);
+    color: white;
+}
+
+/* ===========================
+   EFECTOS ESPECIALES
+   =========================== */
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 87, 51, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 87, 51, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 87, 51, 0); }
+}
+
+.floating {
+    animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ===========================
+   MEDIA QUERIES RESPONSIVAS
+   =========================== */
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 50vh;
+        text-align: center;
+    }
+    
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .custom-card {
+        margin-bottom: 2rem;
+    }
+    
+    .form-container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+    
+    .btn-primary {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .card-img-gradient {
+        height: 150px;
+    }
+    
+    .card-img-gradient i {
+        font-size: 3rem !important;
+    }
+    
+    .floating i {
+        font-size: 4rem !important;
+    }
+}
